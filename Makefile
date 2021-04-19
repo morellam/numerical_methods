@@ -1,7 +1,7 @@
 #simple Makefile to run the .cpp code
 CC = c++
 CFLAGS = -Wall -std=c++11 -o
-SOURCES = src/simpson.cpp
+SOURCES = src2/simpson.cpp
 OBJECTS = $(SOURCES:.c=.o)
 TARGET = simpson
 
