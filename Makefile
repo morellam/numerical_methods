@@ -3,7 +3,7 @@ CC = c++
 CFLAGS = -Wall -std=c++11 -o
 SOURCES = src/simpson.cpp
 OBJECTS = $(SOURCES:.c=.o)
-TARGET = bin/simpson
+TARGET = simpson
 
 $(TARGET) : $(OBJECTS)
 	$(CC) $(CFLAGS) $@ $^
