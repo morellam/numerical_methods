@@ -37,7 +37,7 @@ int main(){
 		integral2 = simpson(f,0,2,2*i);
 		approx_error = abs(integral2 - integral1)/15.0;
 		
-		true_error = 1.6 * pow(2.0/i, 4);
+		true_error = 1.6/3.0 * pow(2.0/i, 4);
 		
 		myfile << i << "\t" << true_error  << "\t" << approx_error << endl;	
 	}
