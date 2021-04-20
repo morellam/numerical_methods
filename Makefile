@@ -1,15 +1,16 @@
 #simple Makefile to run the .cpp code
-CC = c++
-CFLAGS = -Wall -std=c++11 -o
-SOURCES = src2/simpson.cpp
-OBJECTS = $(SOURCES:.c=.o)
-TARGET = simpson
+CXX = c++
+CXXFLAGS = -Wall -std=c++11 -o
+VPATH = ./src2
+SOURCES = simpson.cpp
+TARGET = simpson 
+TEXTFILES = ./pyplot/errors.txt
 
-$(TARGET) : $(OBJECTS)
-	$(CC) $(CFLAGS) $@ $^
+$(TARGET) : $(SOURCES)
+	$(CXX) $(CXXFLAGS) $@ $^
 
 .PHONY = clean
 
 clean : 
-	@rm -f $(TARGET)  
+	@rm -f $(TARGET) $(TEXTFILES)  
 
