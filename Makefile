@@ -11,5 +11,5 @@ $(TARGET) : $(OBJECTS)
 .PHONY = clean
 
 clean : 
-	@rm -f $(TARGET) $(OBJECTS) core
+	@rm -f $(TARGET)  
 
