@@ -11,3 +11,6 @@ To plot the results:
 cd pyplot
 python plot_simpson_errors.py
 ```
+If you want to remove executables and text files generated at runtime:
+```
+make clean
