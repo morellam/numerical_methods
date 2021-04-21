@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt 
 
-n, true_error, app_error = np.loadtxt('errors.txt', unpack = True)
+n, true_error, app_error = np.loadtxt('./pyplot/errors.txt', unpack = True)
 
 plt.xlabel("N")
 plt.xscale('log')
