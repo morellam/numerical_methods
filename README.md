@@ -1,7 +1,7 @@
 # numerical_methods
 Repository with exercises done for HE-8 numerical methods course at GSSI XXXVI cycle. 
 
-To compile, run the code and looking at the results for a specific algorithm just execute:
+To compile, run the code and plot the results for a specific algorithm just execute:
 <pre>
 make <i>algorithm_name</i>
 </pre>
