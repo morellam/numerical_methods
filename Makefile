@@ -3,7 +3,7 @@ CXX = c++
 CXXFLAGS = -Wall -std=c++11 -o
 SRC = ./src
 OUT = ./output
-TEXTFILES = ./pyplot/errors.txt ./pyplot/ode.txt
+TEXTFILES = ./pyplot/*.txt 
 
 makedir :
 	@if  [ ! -d "$(OUT)" ]; then mkdir $(OUT); fi
@@ -27,13 +27,9 @@ simpson : makedir simp
 ode : makedir pendulum
 
 
-
-
-
-
 .PHONY = clean
 
 clean : 
-	@rm -f  $(TEXTFILES) 
+	@rm -f $(TEXTFILES) 
 	@rm -r $(OUT)
 

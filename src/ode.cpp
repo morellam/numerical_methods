@@ -1,13 +1,23 @@
+#define _USE_MATH_DEFINES
+
 #include<iostream>
 #include<fstream>
 #include<cmath>
 
 using namespace std;
 
+
+inline double wrap(double x) { 
+	if(x > 2*M_PI) x = x - (2*M_PI);
+	else if(x < -2*M_PI) x = x + (2*M_PI);  
+	return x;
+	}
+
+
 int main(){
 
 	double steps[] = {0.01, 0.001, 0.0001};
-
+	cout << M_PI << endl;
 	for(double t_step : steps){
 	
 		double time = 10;
@@ -21,11 +31,11 @@ int main(){
 		
 			k_1 = t_step * y;
 			k_3 = - t_step * j * sin(x);
-			x_mid = x + 0.5 * k_1;
+			x_mid = wrap(x + 0.5 * k_1);
 			y_mid = y + 0.5 * k_3;
 
 			k_2 = t_step * y_mid;
-			x += k_2;
+			x = wrap(x + k_2);
 			k_4 = - t_step * j * sin(x_mid);
 			y += k_4; 
 		
