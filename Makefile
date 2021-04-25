@@ -15,7 +15,7 @@ simp: $(SRC)/simpson.cpp
 	@echo Plotting results...
 	@python ./pyplot/plot_simpson_errors.py
 		
-pendulum : $(SRC)/ode.cpp 
+pendulum : $(SRC)/rungekutta.cpp 
 	@$(CXX) $(CXXFLAGS) $(OUT)/$@ $^
 	@echo Running executable... 
 	@./$(OUT)/$@
@@ -24,7 +24,7 @@ pendulum : $(SRC)/ode.cpp
 		
 simpson : makedir simp
 
-ode : makedir pendulum
+rungekutta : makedir pendulum
 
 
 .PHONY = clean
