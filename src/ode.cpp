@@ -7,7 +7,7 @@
 using namespace std;
 
 
-inline double wrap(double x) { 
+double wrap(double x) { 
 	if(x > 2*M_PI) x = x - (2*M_PI);
 	else if(x < -2*M_PI) x = x + (2*M_PI);  
 	return x;
@@ -17,10 +17,9 @@ inline double wrap(double x) {
 int main(){
 
 	double steps[] = {0.01, 0.001, 0.0001};
-	cout << M_PI << endl;
 	for(double t_step : steps){
 	
-		double time = 10;
+		double time = 20;
 		double k_1 = 0, k_2 = 0, k_3, k_4, j = 98.1;
 		double x = 3.12, x_mid = 0, y = 0, y_mid = 0;
 		double kinetic = 0, potential = 0, energy = 0;
