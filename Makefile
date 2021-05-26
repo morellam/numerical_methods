@@ -21,11 +21,19 @@ pendulum : $(SRC)/rungekutta.cpp
 	@./$(OUT)/$@
 	@echo Plotting results...
 	@python ./pyplot/plot_ode.py
-		
+	
+pde: $(SRC)/cranknicolson.cpp 
+	@$(CXX) $(CXXFLAGS) $(OUT)/$@ $^
+	@echo Running executable... 	
+	@./$(OUT)/$@	
+	@echo Plotting results...
+	@python ./pyplot/plot_pde.py
+				
 simpson : makedir simp
 
 rungekutta : makedir pendulum
 
+cranknicolson : makedir pde
 
 .PHONY = clean
 

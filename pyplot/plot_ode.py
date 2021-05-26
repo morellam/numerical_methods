@@ -6,7 +6,7 @@ files = {path + 'ode_0.010000.txt', path + 'ode_0.001000.txt', path + 'ode_0.000
 
 for f in files:
 	time, theta, omega, energy = np.loadtxt(f, unpack = True)
-	
+		
 	fig, axis = plt.subplots(3);
 	fig.suptitle(str(f));
 	axis[0].set_ylabel(r'$\theta$ ' ' [rad]')
