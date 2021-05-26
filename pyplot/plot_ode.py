@@ -18,5 +18,5 @@ for f in files:
 	axis[2].plot(time, energy, marker = ',', c = 'g')
 	axis[2].plot(time, np.full(time.size, energy[0]), marker = ',', c = 'orange')
 	axis[2].set_ylim(1.95, 1.99)	
-	plt.show()
+	plt.savefig('./output/' + str(f).replace(path, '').replace('00.txt','.pdf'))
 

@@ -7,7 +7,7 @@ plt.xlabel("time")
 plt.ylabel("Rms")
 plt.yscale("log")
 
-directory = r'./pyplot/'
+directory = './pyplot/'
 colors = ['r', 'g', 'b']
 N = ['256', '512', '1024']
 for n, col  in zip(N, colors):
@@ -16,5 +16,6 @@ for n, col  in zip(N, colors):
 
 
 plt.legend([r'$2^8$', r'$2^9$', r'$2^{10}$'])
-plt.show()
+plt.savefig('./output/pde_rms.pdf');
+
 
