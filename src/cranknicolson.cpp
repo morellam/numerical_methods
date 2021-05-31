@@ -3,11 +3,20 @@
 #include<vector>	
 #include<fstream>
 
-std::vector<double> simpleCos(std::vector<double> x) {
-	std::vector<double> output(x.size(), 0.);
-	for(int i = 0; i < x.size(); i++)	output[i] = cos(0.5 * M_PI * x[i]); 
-	return output; 
+
+
+std::vector<double> linspace(double x_min, double x_max, double spacing){
+	int N = (x_max - x_min) / spacing;
+
+	std::vector<double> x(N, 0.);	
+	for(int i = 0; i < x.size(); i++){
+		x[i] =  x_min + (double)i * spacing;
+	}
+	return x;
 }
+
+
+inline double simpleCos(double x) { return  cos(0.5 * M_PI * x); }
 
 
 std::vector<double> sourceTerm(double D, std::vector<double> x) {
@@ -19,17 +28,13 @@ std::vector<double> sourceTerm(double D, std::vector<double> x) {
 	return output; 
 }
 
-double rms(std::vector<double> analitical, std::vector<double> numerical){
+double rms(std::vector<double> x, std::vector<double> numerical){
 	
-	double rms = 0.; 
-	if(analitical.size() != numerical.size()){
-		std::cout << "Analitical size: " << analitical.size() << std::endl;
-		std::cout << "Numerical size:  " << numerical.size() << std::endl;
-		return 1.;
-	}
-	for(int i = 0; i < analitical.size(); i++)	rms += pow(analitical[i] - numerical[i], 2.);
+	double rms = 0.;
+
+	for(int i = 0; i < x.size(); i++) rms += pow(simpleCos(x[i]) - numerical[i], 2.);
 	
-	return sqrt(rms/(double)analitical.size());
+	return sqrt(rms/(double)x.size());
 }
 
 
@@ -107,26 +112,22 @@ std::vector<double> CrankNicolson(std::vector<double> u, std::vector<double> sou
 int main(){
 	for(int N : {pow(2,8), pow(2,9), pow(2,10)}){
 
-		int time = 80;
+		int time = 70;
 		double deltat = 0.001, D = 0.1, H = 1.;
 		double deltax = 2. * H / (double)(N-1); 	
 		double alpha = D * deltat * 0.5 / pow(deltax, 2);
  
 		std::vector<double> u(N, 0.);
 		std::vector<double> x(N, 0.);	
-	
-		for(int i = 0; i < x.size(); i++){
-			x[i] = - H + (double)i * deltax;
-		}
+		x = linspace(-1, 1, deltax);
 
-	
 		std::ofstream myfile;
 		myfile.open("./pyplot/pde_" + std::to_string(N) + ".txt", std::ios::out);
 	
 		for(int i = 0; i < time/deltat;  i++){
 			u = CrankNicolson(u, sourceTerm(D, x), alpha, deltat);
 			if(i % 1000 == 0){
-				myfile << i * deltat << "\t" << rms(simpleCos(x), u) << std::endl; 
+				myfile << i * deltat << "\t" << rms(x, u) << std::endl; 
 				std::cout << i * 100 * deltat / time << "\% of events processed" << std::endl;
 			}
 		}

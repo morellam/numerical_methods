@@ -1,6 +1,6 @@
 #simple Makefile to run the .cpp code
 CXX = c++
-CXXFLAGS = -Wall -std=c++11 -o
+CXXFLAGS = -Wall -std=c++11 -O3 -o
 SRC = ./src
 OUT = ./output
 TEXTFILES = ./pyplot/*.txt 
